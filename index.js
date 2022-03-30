@@ -1,4 +1,5 @@
-const h2 = document.createElement('h2')
-h2.textContent = "this content added by javascript"
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("content has loaded")
+})
 
-document.querySelector("body").appendChild(h2)
+
