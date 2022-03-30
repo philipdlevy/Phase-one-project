@@ -1,7 +1,7 @@
 ### Random cocktail generator
 
 ###
-We need an api that has the cocktail recioes, access the recipes, 
+We need an api that has the cocktail recipes, access the recipes, 
 automatically load the cocktails when the page comes up
 press a reload button to get another randomized cocktails
 have a comment section to comment on the drinks. 
