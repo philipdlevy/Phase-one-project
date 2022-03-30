@@ -9,11 +9,11 @@ div.header {
     /* blur size and spread size are optional (they default to 0) */
   }
 
-div.comment {
+div.commentLocation {
     position: absolute;
     top: 700px;
     right: 0;
-    width: 200px;
+    width: 220px;
     height: 100px;
 
 }
