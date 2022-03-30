@@ -1,3 +1,10 @@
 body {
     background: paleturquoise;
 }
+
+div {  
+    /*box-shadow: 120px 80px 40px 20px rgb(79, 42, 179);*/
+    box-shadow: 10px 8px 40px 2px rgb(79, 42, 179);
+    /* in order: x offset, y offset, blur size, spread size, color */
+    /* blur size and spread size are optional (they default to 0) */
+  }
