@@ -12,7 +12,7 @@ div.header {
     border: 3px solid rgb(161, 83, 83);
   }
 
-div.commentLocation {
+.commentLocation {
     position: absolute;
     top: 700px;
     right: 0;
@@ -24,5 +24,11 @@ div.commentLocation {
     text-align: center
 }
 
-
+.emoji {
+    position: absolute;
+    top: 38px;
+    right: 100px;
+    width: 220px;
+    height: 100px; 
+}
 
