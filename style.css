@@ -32,17 +32,29 @@ div.header {
     height: 100px; 
 }
 
-.hidden {
-    visibility: hidden;
-}
+
 
 #next {
     position: relative;
-    left: 500px;
+    left: -114px;
+    top: -85px;
+}
+#previous {
+    position: relative;
+    left: -575px;
+    top: -85px;
 }
 
 #image {
+    position: relative;
     max-width: 30%;
     height: auto;
+    top: -100px;
 }
 
+.measure {
+    position: relative;
+    left: 500px;
+    bottom: 180px;
+    left: 460px;
+}
