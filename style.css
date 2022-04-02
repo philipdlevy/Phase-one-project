@@ -14,10 +14,16 @@ div.header {
 
 .commentLocation {
     position: absolute;
-    top: 700px;
+    top: 1077px;
     right: 0;
     width: 220px;
     height: 100px;
+}
+
+.comments {
+    position: absolute;
+    left: 100x;
+    top: -10px;
 }
 
 .welcome {

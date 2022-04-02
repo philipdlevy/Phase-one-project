@@ -14,8 +14,6 @@ function getDrinks() {
     .then(resp => resp.json())
     .then(drinkData => {
         drinks = drinkData.drinks
-        // console.log("drinks", drinks)
-        // console.log("drinkdata", drinkData)
         displayDrink(currentIndex)
     })
 }
@@ -28,6 +26,8 @@ function displayDrink(index) {
         <h1>${drink.strDrink}</h1>
         <h3>Instructions</h3>
         <p>${drink.strInstructions}</p>
+        <h3>Glass needed</h3>
+        <li>${drink.strGlass}</li>
         <h3>Ingredients</h3>
         <li>${drink.strIngredient1}</li>
         <li>${drink.strIngredient2}</li>
@@ -37,9 +37,16 @@ function displayDrink(index) {
         <li>${drink.strIngredient6}</li>
         <li>${drink.strIngredient7}</li>
 
+        <h3 class="measure">Measurements</h3>
+        <li class="measure">${drink.strMeasure1}</li>
+        <li class="measure">${drink.strMeasure2}</li>
+        <li class="measure">${drink.strMeasure3}</li>
+        <li class="measure">${drink.strMeasure4}</li>
+        <li class="measure">${drink.strMeasure5}</li>
+        <li class="measure">${drink.strMeasure6}</li>
+        <li class="measure">${drink.strMeasure7}</li>
 
-
-        <img src="${drink.strDrinkThumb}"/>
+        <img src="${drink.strDrinkThumb}" id="image"/>
     `
     let btnPrev = document.createElement("button")
     info.appendChild(btnPrev)
@@ -67,8 +74,6 @@ function selectPrevious() {
         displayDrink(currentIndex)
     }
 }
-
-
 
 //creating the comment section and posting comments
 function createComments() {
