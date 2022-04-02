@@ -36,3 +36,8 @@ div.header {
     visibility: hidden;
 }
 
+#next {
+    position: relative;
+    left: 500px;
+}
+

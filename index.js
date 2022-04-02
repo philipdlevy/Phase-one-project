@@ -1,5 +1,5 @@
 let drinks
-
+let currentIndex = 0
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("content has loaded")
@@ -16,41 +16,14 @@ function getDrinks() {
         drinks = drinkData.drinks
         // console.log("drinks", drinks)
         // console.log("drinkdata", drinkData)
-        displayDrinks()
+        displayDrink(currentIndex)
     })
 }
 
-function displayDrinks() {
-    const div = document.querySelector("#links")
-    drinks.forEach(drink => {
-        // console.log(drink.idDrink)
-        const divForDrink = document.createElement("div")
-        div.appendChild(divForDrink)
-        const a = document.createElement("a")
-        a.href = "#"
-        a.id = drink.idDrink
-        a.innerText = drink.strDrink
-        divForDrink.appendChild(a)
-    })
-    div.addEventListener("click", displayDrink)
-}
-
-function hideLinks() {
-    const links = document.querySelector("#links")
-    links.addEventListener("click", () => {
-        links.classList.add("hidden")
-    })
-}
-hideLinks()
-
-function displayDrink(e) {
-    // console.log("target", typeof e.target.id)
+function displayDrink(index) {
     const div = document.querySelector("#drink-image-container")
-    // div.innerHTML = ''
     const info = document.querySelector("#info")
-    const drink = drinks.find(singleDrink => singleDrink.idDrink === e.target.id)
-    // console.log("drink", drink) 
-    // console.log("info", info) 
+    const drink = drinks[index]
     info.innerHTML = `
         <h1>${drink.strDrink}</h1>
         <h3>Instructions</h3>
@@ -68,6 +41,31 @@ function displayDrink(e) {
 
         <img src="${drink.strDrinkThumb}"/>
     `
+    let btnPrev = document.createElement("button")
+    info.appendChild(btnPrev)
+    btnPrev.innerText = "Previous"
+    btnPrev.id = "previous"
+    btnPrev.addEventListener("click", selectPrevious)
+
+    let btnNext = document.createElement("button")
+    info.appendChild(btnNext)
+    btnNext.innerText = "Next"
+    btnNext.id = "next"
+    btnNext.addEventListener("click", selectNext)
+}
+
+function selectNext() {
+    if(currentIndex < drinks.length-1) {
+        currentIndex++
+        displayDrink(currentIndex)
+    }
+}
+
+function selectPrevious() {
+    if(currentIndex > 0) {
+        currentIndex--
+        displayDrink(currentIndex)
+    }
 }
 
 
