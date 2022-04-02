@@ -27,7 +27,7 @@ div.header {
 .emoji {
     position: absolute;
     top: 38px;
-    right: 100px;
+    right: 575px;
     width: 220px;
     height: 100px; 
 }
@@ -39,5 +39,10 @@ div.header {
 #next {
     position: relative;
     left: 500px;
+}
+
+#image {
+    max-width: 30%;
+    height: auto;
 }
 
