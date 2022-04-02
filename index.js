@@ -21,24 +21,53 @@ function getDrinks() {
 }
 
 function displayDrinks() {
-    const div = document.querySelector("#drink-image-container")
+    const div = document.querySelector("#links")
     drinks.forEach(drink => {
         // console.log(drink.idDrink)
-        const li = document.createElement("li")
-        div.appendChild(li)
+        const divForDrink = document.createElement("div")
+        div.appendChild(divForDrink)
         const a = document.createElement("a")
         a.href = "#"
         a.id = drink.idDrink
         a.innerText = drink.strDrink
-        li.appendChild(a)
+        divForDrink.appendChild(a)
     })
     div.addEventListener("click", displayDrink)
 }
 
+function hideLinks() {
+    const links = document.querySelector("#links")
+    links.addEventListener("click", () => {
+        links.classList.add("hidden")
+    })
+}
+hideLinks()
+
 function displayDrink(e) {
-    console.log(e.target.id)
+    // console.log("target", typeof e.target.id)
     const div = document.querySelector("#drink-image-container")
-    div.innerHTML = " "
+    // div.innerHTML = ''
+    const info = document.querySelector("#info")
+    const drink = drinks.find(singleDrink => singleDrink.idDrink === e.target.id)
+    // console.log("drink", drink) 
+    // console.log("info", info) 
+    info.innerHTML = `
+        <h1>${drink.strDrink}</h1>
+        <h3>Instructions</h3>
+        <p>${drink.strInstructions}</p>
+        <h3>Ingredients</h3>
+        <li>${drink.strIngredient1}</li>
+        <li>${drink.strIngredient2}</li>
+        <li>${drink.strIngredient3}</li>
+        <li>${drink.strIngredient4}</li>
+        <li>${drink.strIngredient5}</li>
+        <li>${drink.strIngredient6}</li>
+        <li>${drink.strIngredient7}</li>
+
+
+
+        <img src="${drink.strDrinkThumb}"/>
+    `
 }
 
 
@@ -64,42 +93,3 @@ function createComments() {
 
 
 
-// const drinks = []
-
-// function getDrinks() {
-//     const drinkUrl = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
-//     fetch(drinkUrl)
-//     .then(resp => resp.json())
-//     .then(resp => {
-//         resp.drinks.forEach(drink => {
-//             addDrinksToDOM(drink)
-//         }) 
-        // console.log("resp", resp)
-        // resp.drinks.forEach(drink => console.log(drink))
-        
-//     })
-// }
-// getDrinks()
-
-
-// function addDrinksToDOM(drink) {
-//     const drinkCollection = document.querySelector("#drink-image-container")
-//     const div = document.createElement("div")
-//     // div.className = "drink-div"
-//     div.classList.add("drink-div")
-//     drinkCollection.append(div)
-    
-//     const drinkName = document.createElement("h2")
-//     drinkName.innerText = "hello!"
-//     div.append(drinkName)
-// }
-
-
-
-// function addDrinksToDOM(drink) {
-//     const div = document.querySelector("#drink-image-container")
-//         const li = document.createElement("li")
-//         li.textContent = drink
-//         div.append(li)
-// }
-// addDrinksToDOM()
