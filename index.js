@@ -17,11 +17,17 @@ function getDrinks() {
         displayDrink(currentIndex)
     })
 }
-
+//displaying drink info
 function displayDrink(index) {
     const div = document.querySelector("#drink-image-container")
     const info = document.querySelector("#info")
     const drink = drinks[index]
+    const lis = Object.keys(drink).filter(key => key.startsWith("strIngredient")).filter(k => drink[k]).map(k => {
+        return `<li>${drink[k]}</li>`
+    }).join("")
+    const lisMeasure = Object.keys(drink).filter(key => key.startsWith("strMeasure")).filter(key => drink[key]).map(key => `<li class="measure">${drink[key]}</li>`).join("")
+    console.log(lisMeasure)
+    // console.log(lis)
     info.innerHTML = `
         <h1>${drink.strDrink}</h1>
         <h3>Instructions</h3>
@@ -29,45 +35,34 @@ function displayDrink(index) {
         <h3>Glass needed</h3>
         <li>${drink.strGlass}</li>
         <h3>Ingredients</h3>
-        <li>${drink.strIngredient1}</li>
-        <li>${drink.strIngredient2}</li>
-        <li>${drink.strIngredient3}</li>
-        <li>${drink.strIngredient4}</li>
-        <li>${drink.strIngredient5}</li>
-        <li>${drink.strIngredient6}</li>
-        <li>${drink.strIngredient7}</li>
+        ${lis}
 
         <h3 class="measure">Measurements</h3>
-        <li class="measure">${drink.strMeasure1}</li>
-        <li class="measure">${drink.strMeasure2}</li>
-        <li class="measure">${drink.strMeasure3}</li>
-        <li class="measure">${drink.strMeasure4}</li>
-        <li class="measure">${drink.strMeasure5}</li>
-        <li class="measure">${drink.strMeasure6}</li>
-        <li class="measure">${drink.strMeasure7}</li>
+        ${lisMeasure}
 
         <img src="${drink.strDrinkThumb}" id="image"/>
     `
+    //creating previous button
     let btnPrev = document.createElement("button")
     info.appendChild(btnPrev)
     btnPrev.innerText = "Previous"
     btnPrev.id = "previous"
     btnPrev.addEventListener("click", selectPrevious)
-
+    //creating next button
     let btnNext = document.createElement("button")
     info.appendChild(btnNext)
     btnNext.innerText = "Next"
     btnNext.id = "next"
     btnNext.addEventListener("click", selectNext)
 }
-
+//next button functionality
 function selectNext() {
     if(currentIndex < drinks.length-1) {
         currentIndex++
         displayDrink(currentIndex)
     }
 }
-
+//previous button functionality
 function selectPrevious() {
     if(currentIndex > 0) {
         currentIndex--
@@ -87,8 +82,6 @@ function createComments() {
     list.appendChild(li)  
     })  
 }
-
-
 
 
 

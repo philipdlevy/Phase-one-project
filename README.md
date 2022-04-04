@@ -2,11 +2,13 @@
 
 https://github.com/philipdlevy/Phase-one-project
 
-detailed overview of what the project is
+### Overview of project 
+* Uses an external api of drinks to load drinks on the page. 
+* There are added features of commenting on the drinks and buttons to select the next or previous drink. 
 
 
 ### HOW TO USE
 * Fork and clone
 * open the index.html 
 * comment on the drink selection
-* press the reload button and get a new drink idea
+* Press the next button to load the next drink or the previous button to load the previous drink
