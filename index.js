@@ -80,9 +80,10 @@ function createComments() {
     const li = document.createElement("li")
     li.innerText = event.target.comment.value
     list.appendChild(li)  
+
+    submitForm.reset();
     })  
 }
-
 
 
 
