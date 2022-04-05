@@ -76,12 +76,12 @@ function createComments() {
     submitForm.addEventListener("submit", (event) => {
         event.preventDefault()
 
-    const list = document.querySelector("#list")
-    const li = document.createElement("li")
-    li.innerText = event.target.comment.value
-    list.appendChild(li)  
+        const list = document.querySelector("#list")
+        const li = document.createElement("li")
+        li.innerText = event.target.comment.value
+        list.appendChild(li)  
 
-    submitForm.reset();
+        submitForm.reset();
     })  
 }
 
