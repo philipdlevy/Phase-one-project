@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     getDrinks()
     createComments()
+    colorizeButton()
 })
 
 function getDrinks() {
@@ -14,6 +15,7 @@ function getDrinks() {
     .then(resp => resp.json())
     .then(drinkData => {
         drinks = drinkData.drinks
+        console.log("drinkssss", drinkData)
         displayDrink(currentIndex)
     })
 }
@@ -22,22 +24,22 @@ function displayDrink(index) {
     const div = document.querySelector("#drink-image-container")
     const info = document.querySelector("#info")
     const drink = drinks[index]
-    const lis = Object.keys(drink).filter(key => key.startsWith("strIngredient")).filter(k => drink[k]).map(k => {
+    const lis = Object.keys(drink).filter(key => key.startsWith("strIngredient") && drink[key] != null).map(k => {
         return `<li>${drink[k]}</li>`
     }).join("")
-    const lisMeasure = Object.keys(drink).filter(key => key.startsWith("strMeasure")).filter(key => drink[key]).map(key => `<li class="measure">${drink[key]}</li>`).join("")
-    console.log(lisMeasure)
+    const lisMeasure = Object.keys(drink).filter(key => key.startsWith("strMeasure") && drink[key] != null).map(key => `<li class="measure">${drink[key]}</li>`).join("")
+    // console.log(lisMeasure)
     // console.log(lis)
     info.innerHTML = `
         <h1>${drink.strDrink}</h1>
-        <h3>Instructions</h3>
+        <h3 class="color">Instructions</h3>
         <p>${drink.strInstructions}</p>
-        <h3>Glass needed</h3>
+        <h3 class="color">Glass needed</h3>
         <li>${drink.strGlass}</li>
-        <h3>Ingredients</h3>
+        <h3 class="color">Ingredients</h3>
         ${lis}
 
-        <h3 class="measure">Measurements</h3>
+        <h3 class="measure color">Measurements</h3>
         ${lisMeasure}
 
         <img src="${drink.strDrinkThumb}" id="image"/>
@@ -70,16 +72,30 @@ function selectPrevious() {
     }
 }
 
+function colorizeButton() {
+    const links = document.querySelector("#links")
+    links.addEventListener("click", onClickColorize)
+}
+
+
+function onClickColorize(e) {
+    const colorClasses = document.querySelectorAll(".color")
+    colorClasses.forEach(h3 => h3.style.color = "#" + Math.floor(Math.random()*16777215).toString(16))
+}
+
 //creating the comment section and posting comments
 function createComments() {
     const submitForm = document.querySelector("#comment-form")
     submitForm.addEventListener("submit", (event) => {
         event.preventDefault()
-
+        console.log(list)
         const list = document.querySelector("#list")
         const li = document.createElement("li")
         li.innerText = event.target.comment.value
-        list.appendChild(li)  
+        if (li.innerText.trim() !== "") {
+            list.appendChild(li)
+        };
+        
 
         submitForm.reset();
     })  
